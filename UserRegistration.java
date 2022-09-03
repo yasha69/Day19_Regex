@@ -64,7 +64,7 @@ public class UserRegistration {
         Scanner sc2= new Scanner(System.in);
         System.out.println("Enter password");
         String password = sc2.next();
-        Pattern p = Pattern.compile("^[A-Z]{1}+[a-zA-z1-9]{6,}[1-9]{1}$");
+        Pattern p = Pattern.compile("^[A-Z]{1}+[a-zA-z1-9]{5,}[@$#^]{1}[1-9]{1}$");
         Matcher matcher = p.matcher(password);
         boolean result = matcher.matches();
         if (result) {
