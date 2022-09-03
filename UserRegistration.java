@@ -61,6 +61,19 @@ public class UserRegistration {
             System.out.println("Invalid Email");
         }
     }
+    public void validPhoneNo() {
+        System.out.println("Enter Phone no with country code");
+        String mobileno = sc.next();
+        String regex = "^[1-9]{2}\\s[0-9]{10}$";
+        Pattern p = Pattern.compile(regex);
+        Matcher matcher = p.matcher(mobileno);
+        boolean result = matcher.matches();
+        if (result) {
+            System.out.println("Valid MobileNo");
+        } else {
+            System.out.println("Invalid MobileNo");
+        }
+    }
     public static void main(String[] args) {
         /**
          * create object for UserRegistration class object name is registration.
@@ -75,14 +88,8 @@ public class UserRegistration {
              */
             System.out.println(
                     "Enter choice to validate\n" + "Enter 1 for UserName\n"
-                            + "Enter 2 for Lastname\n" + "Enter 3 for Email\n");// uc1
-
+                            + "Enter 2 for Lastname\n" + "Enter 3 for Email\n" + "Enter 4 for phone number\n");
             int choice = sc.nextInt();
-            /**
-             * using switch case for choosing option and print output calling
-             * wise.
-             *
-             */
             switch (choice) {
                 case 1 :
                     registration.validateUserName();
@@ -92,6 +99,9 @@ public class UserRegistration {
                     break;
                 case 3 :
                     registration.validateEmail();
+                    break;
+                case 4:
+                    registration.validPhoneNo();
                     break;
                 default :
                     System.out.println("Invalid choice");
