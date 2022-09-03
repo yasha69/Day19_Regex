@@ -6,40 +6,24 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
     static Scanner sc = new Scanner(System.in);
+
     public void validateUserName() {
         System.out.println("Enter UserName");
         String userName = sc.next();
-        String regex = "^[A-Z]{1}[a-zA-z0-9]{2,}$";
-        /**
-         * First, the pattern is created using the Pattern.compile() method The
-         * first parameter indicates which pattern is being searched for
-         */
-        Pattern p = Pattern.compile(regex);
-        /**
-         * The matcher() method is used to search for the pattern in a string.
-         * It returns a Matcher object which contains information about the
-         * search that was performed.
-         */
+        Pattern p = Pattern.compile("^[A-Z]{1}[a-zA-z0-9]{2,}$");
         Matcher matcher = p.matcher(userName);
-        /**
-         * boolean data type is used for return op is true or false
-         */
         boolean result = matcher.matches();
-        /**
-         * if else conditional statment is used if pattern match then print
-         * valid username if not matched print invalid username
-         */
         if (result) {
             System.out.println("Valid username");
         } else {
             System.out.println("Invalid username");
         }
     }
+
     public void validateLastName() {
         System.out.println("Enter Lastname");
         String lastName = sc.next();
-        String regex = "^[A-Z]{1}[a-zA-z0-9]{2,}$";
-        Pattern p = Pattern.compile(regex);
+        Pattern p = Pattern.compile("^[A-Z]{1}[a-zA-z0-9]{2,}$");
         Matcher matcher = p.matcher(lastName);
         boolean result = matcher.matches();
         if (result) {
@@ -48,11 +32,11 @@ public class UserRegistration {
             System.out.println("Invalid lastname");
         }
     }
+
     public void validateEmail() {
         System.out.println("Enter Email");
         String eMail = sc.next();
-        String regex = "^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*[@][a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?";
-        Pattern p = Pattern.compile(regex);
+        Pattern p = Pattern.compile("^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*[@][a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?");
         Matcher matcher = p.matcher(eMail);
         boolean result = matcher.matches();
         if (result) {
@@ -61,52 +45,57 @@ public class UserRegistration {
             System.out.println("Invalid Email");
         }
     }
+
     public void validPhoneNo() {
+        Scanner sc1 = new Scanner(System.in);
         System.out.println("Enter Phone no with country code");
-        String mobileno = sc.next();
-        String regex = "^[1-9]{2}\\s[0-9]{10}$";
-        Pattern p = Pattern.compile(regex);
-        Matcher matcher = p.matcher(mobileno);
-        boolean result = matcher.matches();
-        if (result) {
-            System.out.println("Valid MobileNo");
+        String phoneNo = sc1.next();
+        Pattern p = Pattern.compile("^[0-9]{1,3} [0-9]{10}$");
+        Matcher matcher = p.matcher(phoneNo);
+        boolean result1 = matcher.matches();
+        if (result1) {
+            System.out.println("Valid PhoneNo");
         } else {
-            System.out.println("Invalid MobileNo");
+            System.out.println("Invalid phoneeNo");
         }
     }
-    public static void main(String[] args) {
-        /**
-         * create object for UserRegistration class object name is registration.
-         */
+    public void validPassword () {
+        System.out.println("Enter password");
+        String password = sc.next();
+        Pattern p = Pattern.compile("^[a-zA-Z]{1,8}$");
+        Matcher matcher= p.matcher(password);
+        boolean result = matcher.matches();
+        if (result) {
+            System.out.println("Valid Password");
+        } else {
+            System.out.println("Invalid Password");
+        }
+    }
+    public static void main (String[]args){
         UserRegistration registration = new UserRegistration();
-        /**
-         * while loop is used
-         */
-        while (true) {
-            /**
-             * user input choice for checking Multiple validation
-             */
-            System.out.println(
-                    "Enter choice to validate\n" + "Enter 1 for UserName\n"
-                            + "Enter 2 for Lastname\n" + "Enter 3 for Email\n" + "Enter 4 for phone number\n");
-            int choice = sc.nextInt();
-            switch (choice) {
-                case 1 :
-                    registration.validateUserName();
-                    break;
-                case 2 :
-                    registration.validateLastName();
-                    break;
-                case 3 :
-                    registration.validateEmail();
-                    break;
-                case 4:
-                    registration.validPhoneNo();
-                    break;
-                default :
-                    System.out.println("Invalid choice");
-                    System.exit(0);
-            }
+        System.out.println(
+                "Enter choice to validate\n" + "Enter 1 for UserName\n"
+                        + "Enter 2 for Lastname\n" + "Enter 3 for Email\n" + "Enter 4 for phone number\n" + "Enter 5 for password\n");
+        int choice = sc.nextInt();
+        switch (choice) {
+            case 1:
+                registration.validateUserName();
+                break;
+            case 2:
+                registration.validateLastName();
+                break;
+            case 3:
+                registration.validateEmail();
+                break;
+            case 4:
+                registration.validPhoneNo();
+                break;
+            case 5:
+                registration.validPassword();
+                break;
+            default:
+                System.out.println("Invalid choice");
+                System.exit(0);
         }
     }
 }
