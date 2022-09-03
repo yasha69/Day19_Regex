@@ -50,20 +50,22 @@ public class UserRegistration {
         Scanner sc1 = new Scanner(System.in);
         System.out.println("Enter Phone no with country code");
         String phoneNo = sc1.next();
-        Pattern p = Pattern.compile("^[0-9]{1,3} [0-9]{10}$");
+        Pattern p = Pattern.compile("^[0-9]{1,3}\\s[0-9]{10}$");
         Matcher matcher = p.matcher(phoneNo);
         boolean result1 = matcher.matches();
         if (result1) {
             System.out.println("Valid PhoneNo");
         } else {
-            System.out.println("Invalid phoneeNo");
+            System.out.println("Invalid phoneNo");
         }
     }
-    public void validPassword () {
+
+    public void validPassword() {
+        Scanner sc2= new Scanner(System.in);
         System.out.println("Enter password");
-        String password = sc.next();
-        Pattern p = Pattern.compile("^[A-Z]{1,}[a-zA-Z]{7,}$");
-        Matcher matcher= p.matcher(password);
+        String password = sc2.next();
+        Pattern p = Pattern.compile("^[A-Z]{1}+[a-zA-z1-9]{6,}[1-9]{1}$");
+        Matcher matcher = p.matcher(password);
         boolean result = matcher.matches();
         if (result) {
             System.out.println("Valid Password");
@@ -71,31 +73,34 @@ public class UserRegistration {
             System.out.println("Invalid Password");
         }
     }
-    public static void main (String[]args){
+
+    public static void main(String[] args) {
         UserRegistration registration = new UserRegistration();
-        System.out.println(
-                "Enter choice to validate\n" + "Enter 1 for UserName\n"
-                        + "Enter 2 for Lastname\n" + "Enter 3 for Email\n" + "Enter 4 for phone number\n" + "Enter 5 for password\n");
-        int choice = sc.nextInt();
-        switch (choice) {
-            case 1:
-                registration.validateUserName();
-                break;
-            case 2:
-                registration.validateLastName();
-                break;
-            case 3:
-                registration.validateEmail();
-                break;
-            case 4:
-                registration.validPhoneNo();
-                break;
-            case 5:
-                registration.validPassword();
-                break;
-            default:
-                System.out.println("Invalid choice");
-                System.exit(0);
+        while (true) {
+            System.out.println(
+                    "Enter choice to validate\n" + "Enter 1 for UserName\n"
+                            + "Enter 2 for Lastname\n" + "Enter 3 for Email\n" + "Enter 4 for phone number\n" + "Enter 5 for password\n");
+            int choice = sc.nextInt();
+            switch (choice) {
+                case 1:
+                    registration.validateUserName();
+                    break;
+                case 2:
+                    registration.validateLastName();
+                    break;
+                case 3:
+                    registration.validateEmail();
+                    break;
+                case 4:
+                    registration.validPhoneNo();
+                    break;
+                case 5:
+                    registration.validPassword();
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+                    System.exit(0);
+            }
         }
     }
 }
