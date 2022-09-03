@@ -1,13 +1,12 @@
 package Day19Regex;
 
-
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserRegistration {
     static Scanner sc=new Scanner(System.in);
-    public void validateUsername() {
+    public void validateUserName() {
         System.out.println("Enter UserName");
         String userName=sc.next();
         String regex = "^[A-Z]{1}[a-zA-z0-9]{2,}$";
@@ -22,11 +21,11 @@ public class UserRegistration {
          */
         Matcher matcher = p.matcher(userName);
         /**
-         * boolean data type is used for return output is true or false
+         * boolean data type is used for return op is true or false
          */
         boolean result = matcher.matches();
         /**
-         *  if else conditional statement is used
+         *  if else conditional statment is used
          *  if pattern match then print  valid username if not matched print invalid username
          */
         if(result){
@@ -34,6 +33,20 @@ public class UserRegistration {
         }
         else {
             System.out.println("Invalid username");
+        }
+    }
+    public void validateLastName() {
+        System.out.println("Enter Lastname");
+        String lastName=sc.next();
+        String regex = "^[A-Z]{1}[a-zA-z0-9]{2,}$";
+        Pattern p = Pattern.compile(regex);
+        Matcher matcher = p.matcher(lastName);
+        boolean result = matcher.matches();
+        if(result){
+            System.out.println("Valid lastname");
+        }
+        else {
+            System.out.println("Invalid lastname");
         }
     }
     public static void main(String[] args) {
@@ -46,10 +59,11 @@ public class UserRegistration {
          * while loop is used
          */
         while(true) {
+
             /**
-             * user input choice for checking Multiple validation
+             * userinput choice for checking Multiple validation
              */
-            System.out.println("Enter choice.............\n " +"1)UserName\n");
+            System.out.println("Enter choice to check valid and invalid\n" +"Enter 1 for UserName\n" + "Enter 2 for Lastname\n");//uc1
 
             int choice=sc.nextInt();
             /**
@@ -58,7 +72,10 @@ public class UserRegistration {
              */
             switch(choice) {
                 case 1:
-                    registration.validateUsername();
+                    registration.validateUserName();
+                    break;
+                case 2:
+                    registration.validateLastName();
                     break;
                 default:
                     System.out.println("Invalid choice");
