@@ -73,13 +73,25 @@ public class UserRegistration {
             System.out.println("Invalid Password");
         }
     }
-
+    private void emailValidation() {
+        System.out.println("Enter Email");
+        String email=sc.next();
+        Pattern p = Pattern.compile("^[a-zA-Z0-9]+([+_.-][a-zA-Z0-9]+)*[@][a-zA-Z0-9]+[.][a-zA-Z]{2,4}([.][a-zA-Z]{2,4})?");
+        Matcher matcher = p.matcher(email);
+        boolean result = matcher.matches();
+        if(result){
+            System.out.println("Valid Email Address");
+        }
+        else {
+            System.out.println("Invalid Email Address");
+        }
+    }
     public static void main(String[] args) {
         UserRegistration registration = new UserRegistration();
         while (true) {
             System.out.println(
                     "Enter choice to validate\n" + "Enter 1 for UserName\n"
-                            + "Enter 2 for Lastname\n" + "Enter 3 for Email\n" + "Enter 4 for phone number\n" + "Enter 5 for password\n");
+                            + "Enter 2 for Lastname\n" + "Enter 3 for Email\n" + "Enter 4 for phone number\n" + "Enter 5 for password\n" + "Enter 6 for email validation");
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
@@ -96,6 +108,9 @@ public class UserRegistration {
                     break;
                 case 5:
                     registration.validPassword();
+                    break;
+                case 6:
+                    registration.emailValidation();
                     break;
                 default:
                     System.out.println("Invalid choice");
