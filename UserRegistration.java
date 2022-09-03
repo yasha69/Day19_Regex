@@ -62,7 +62,7 @@ public class UserRegistration {
     public void validPassword () {
         System.out.println("Enter password");
         String password = sc.next();
-        Pattern p = Pattern.compile("^[a-zA-Z]{1,8}$");
+        Pattern p = Pattern.compile("^[A-Z]{1,}[a-zA-Z]{7,}$");
         Matcher matcher= p.matcher(password);
         boolean result = matcher.matches();
         if (result) {
